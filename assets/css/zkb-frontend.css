@@ -1,0 +1,470 @@
+/**
+ * Zero-Knowledge Blog Frontend Styles
+ * Styles for the public-facing decryption interface
+ */
+
+/* Main Container */
+.zkb-decrypt-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e1e5e9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Encrypted Notice */
+.zkb-encrypted-notice {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.zkb-lock-icon {
+    margin-bottom: 20px;
+}
+
+.zkb-lock {
+    font-size: 48px;
+    display: inline-block;
+    animation: zkb-pulse 2s infinite;
+}
+
+@keyframes zkb-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.zkb-encrypted-notice h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.zkb-encrypted-notice p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Decrypt Form */
+.zkb-decrypt-form {
+    margin-bottom: 25px;
+}
+
+.zkb-form-group {
+    margin-bottom: 20px;
+}
+
+.zkb-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.zkb-password-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}
+
+.zkb-password-input:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1);
+}
+
+.zkb-password-input::placeholder {
+    color: #a0a5aa;
+}
+
+/* Form Actions */
+.zkb-form-actions {
+    text-align: center;
+}
+
+.zkb-decrypt-btn {
+    background: linear-gradient(135deg, #007cba 0%, #005a87 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    position: relative;
+}
+
+.zkb-decrypt-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #005a87 0%, #004666 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 124, 186, 0.3);
+}
+
+.zkb-decrypt-btn:active {
+    transform: translateY(0);
+}
+
+.zkb-decrypt-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.zkb-btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zkb-btn-loading::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: zkb-spin 1s linear infinite;
+}
+
+@keyframes zkb-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Messages */
+.zkb-messages {
+    margin: 20px 0;
+    min-height: 20px;
+}
+
+.zkb-message {
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    animation: zkb-fadeIn 0.3s ease;
+}
+
+@keyframes zkb-fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.zkb-message-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.zkb-message-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.zkb-message-info {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* Decrypted Content */
+.zkb-decrypted-content {
+    animation: zkb-slideDown 0.5s ease;
+}
+
+@keyframes zkb-slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: none;
+    }
+}
+
+.zkb-content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e1e5e9;
+}
+
+.zkb-decrypted-title h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.zkb-hide-content {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 20px;
+}
+
+.zkb-hide-content:hover {
+    background: #5a6268;
+}
+
+.zkb-content-body {
+    color: #2c3e50;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.zkb-content-body h1,
+.zkb-content-body h2,
+.zkb-content-body h3,
+.zkb-content-body h4,
+.zkb-content-body h5,
+.zkb-content-body h6 {
+    color: #2c3e50;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.zkb-content-body p {
+    margin-bottom: 20px;
+}
+
+.zkb-content-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.zkb-content-body blockquote {
+    border-left: 4px solid #007cba;
+    padding-left: 20px;
+    margin: 25px 0;
+    font-style: italic;
+    color: #6c757d;
+}
+
+.zkb-content-body code {
+    background-color: #f8f9fa;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 14px;
+}
+
+.zkb-content-body pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+/* Security Notice */
+.zkb-security-notice {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.zkb-security-notice p {
+    margin: 0;
+    font-size: 13px;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.zkb-security-notice strong {
+    color: #495057;
+}
+
+/* Error States */
+.zkb-error {
+    text-align: center;
+    padding: 30px;
+    color: #721c24;
+}
+
+.zkb-error h3 {
+    color: #721c24;
+    margin-bottom: 15px;
+}
+
+/* Encrypted Title Placeholder */
+.zkb-encrypted-title {
+    color: #6c757d;
+    font-style: italic;
+    font-weight: normal;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .zkb-decrypt-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .zkb-encrypted-notice h3 {
+        font-size: 20px;
+    }
+    
+    .zkb-password-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    .zkb-decrypt-btn {
+        width: 100%;
+        padding: 14px;
+    }
+    
+    .zkb-content-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .zkb-hide-content {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+    
+    .zkb-decrypted-title h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zkb-decrypt-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .zkb-lock {
+        font-size: 36px;
+    }
+    
+    .zkb-encrypted-notice h3 {
+        font-size: 18px;
+    }
+    
+    .zkb-content-body {
+        font-size: 15px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .zkb-decrypt-container {
+        background: #1a1a1a;
+        border-color: #333;
+        color: #e0e0e0;
+    }
+    
+    .zkb-encrypted-notice h3,
+    .zkb-decrypted-title h2,
+    .zkb-content-body {
+        color: #e0e0e0;
+    }
+    
+    .zkb-password-input {
+        background-color: #2d2d2d;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+    
+    .zkb-password-input::placeholder {
+        color: #888;
+    }
+    
+    .zkb-security-notice {
+        background-color: #2d2d2d;
+        border-color: #444;
+    }
+    
+    .zkb-content-body blockquote {
+        color: #aaa;
+    }
+    
+    .zkb-content-body code,
+    .zkb-content-body pre {
+        background-color: #2d2d2d;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .zkb-decrypt-container {
+        border-width: 2px;
+    }
+    
+    .zkb-password-input {
+        border-width: 2px;
+    }
+    
+    .zkb-message {
+        border-width: 2px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .zkb-decrypt-form,
+    .zkb-form-actions,
+    .zkb-hide-content,
+    .zkb-security-notice {
+        display: none;
+    }
+    
+    .zkb-decrypt-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Focus Indicators for Accessibility */
+.zkb-password-input:focus,
+.zkb-decrypt-btn:focus,
+.zkb-hide-content:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .zkb-lock,
+    .zkb-message,
+    .zkb-decrypted-content {
+        animation: none;
+    }
+    
+    .zkb-decrypt-btn:hover {
+        transform: none;
+    }
+}
